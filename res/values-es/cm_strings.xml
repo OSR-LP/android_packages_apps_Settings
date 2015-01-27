@@ -813,7 +813,33 @@
   <string name="battery_saver_summary">Reducir el rendimiento y limitar los datos en segundo plano</string>
   <string name="battery_saver_summary_unavailable">No disponible durante la carga</string>
 
-<!-- Status Bar Activity Indicators -->
-    <string name="show_activity_indicators_title">Indicadores de actividad</string>
-    <string name="show_activity_indicators_summary">Ver indicadores en barra de señal</string>
+
+
+<!--                                                    OSR                                                                  -->
+
+
+
+  <!-- Status Bar Activity Indicators -->
+  <string name="show_activity_indicators_title">Indicadores de actividad</string>
+  <string name="show_activity_indicators_summary">Ver indicadores en barra de señal</string>
+
+  <!-- Network traffic -->
+  <string name="network_traffic_title">Tráfico de red</string>
+  <string name="show_network_traffic_state">Monitor de tráfico barra de estado</string>
+  <string name="show_network_traffic_unit">Ver unidad</string>
+  <string name="show_network_traffic_frequency">Intervalo de actualización</string>
+  <string name="show_network_traffic_disable">Desactivado</string>
+  <string name="show_network_traffic_up">Saliente</string>
+  <string name="show_network_traffic_down">Entrante</string>
+  <string name="show_network_traffic_all">Saliente y entrante</string>
+  <string name="show_network_traffic_bit">Bits por segundo</string>
+  <string name="show_network_traffic_byte">Bytes por segundo</string>
+  <string name="show_network_traffic_500">500 ms</string>
+  <string name="show_network_traffic_1000">1000 ms</string>
+  <string name="show_network_traffic_1500">1500 ms</string>
+  <string name="show_network_traffic_2000">2000 ms</string>
+  <string name="network_traffic_autohide">Auto ocultar</string>
+  <string name="network_traffic_autohide_summary">Ocultar el monitor de tráfico cuando no hay actividad </string>
+  <string name="network_traffic_autohide_threshold">Umbral de inactividad</string>
+
 </resources>
