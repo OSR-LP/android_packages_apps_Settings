@@ -1177,4 +1177,8 @@
     <string name="battery_saver_threshold">Battery saver threshold</string>
     <string name="battery_saver_summary">Reduce performance and limit background data</string>
     <string name="battery_saver_summary_unavailable">Not available while charging</string>
+
+ <!--Status bar data and wifi activity -->
+    <string name="show_activity_indicators_title">Activity indicators</string>
+    <string name="show_activity_indicators_summary">Show indicators in signal bars</string>
 </resources>

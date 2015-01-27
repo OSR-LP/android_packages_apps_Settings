@@ -812,4 +812,8 @@
   <string name="battery_saver_threshold">Ahorro de batería</string>
   <string name="battery_saver_summary">Reducir el rendimiento y limitar los datos en segundo plano</string>
   <string name="battery_saver_summary_unavailable">No disponible durante la carga</string>
+
+<!-- Status Bar Activity Indicators -->
+    <string name="show_activity_indicators_title">Indicadores de actividad</string>
+    <string name="show_activity_indicators_summary">Ver indicadores en barra de señal</string>
 </resources>
