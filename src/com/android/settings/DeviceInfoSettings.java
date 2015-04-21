@@ -24,6 +24,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -63,6 +64,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String LOG_TAG = "DeviceInfoSettings";
     private static final String FILENAME_PROC_VERSION = "/proc/version";
     private static final String FILENAME_MSV = "/sys/board_properties/soc/msv";
+    private static final String PROPERTY_CMLICENSE_URL = "ro.cmlegal.url";
 
     private static final String KEY_CONTAINER = "container";
     private static final String KEY_REGULATORY_INFO = "regulatory_info";
@@ -86,7 +88,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
-    //private static final String KEY_CM_UPDATES = "cm_updates";
+    private static final String KEY_CM_UPDATES = "cm_updates";
+    private static final String KEY_CM_LICENSE = "cmlicense";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -130,12 +133,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 PROPERTY_SELINUX_STATUS);
 
         // Only the owner should see the Updater settings, if it exists
-
-        //if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
-            //removePreferenceIfPackageNotInstalled(findPreference(KEY_CM_UPDATES));
-        //} else {
-            //getPreferenceScreen().removePreference(findPreference(KEY_CM_UPDATES));
-        //}
+        if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+            removePreferenceIfPackageNotInstalled(findPreference(KEY_CM_UPDATES));
+        } else {
+            getPreferenceScreen().removePreference(findPreference(KEY_CM_UPDATES));
+        }
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SAFETY_LEGAL,
@@ -288,6 +290,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 } catch (Exception e) {
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
+            }
+        } else if (preference.getKey().equals(KEY_CM_LICENSE)) {
+            String userCMLicenseUrl = SystemProperties.get(PROPERTY_CMLICENSE_URL);
+            final Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.setData(Uri.parse(userCMLicenseUrl));
+            try {
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
             }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
